@@ -47,7 +47,7 @@
     }
 
     .welcome-message {
-      font-size: 24px; /* Decreased font size for better mobile readability */
+      font-size: 24px; /* Default font size */
       font-weight: bold;
       margin-top: 20px; /* Adjust spacing between the two texts */
       overflow: hidden; /* Hide the overflow of the text */
@@ -87,12 +87,23 @@
       border-radius: 5px;
       margin: 0 5px; /* Adjust spacing between time boxes */
       padding: 5px;
-      font-size: 14px; /* Decreased font size for better mobile readability */
+      font-size: 14px; /* Default font size for time boxes */
     }
 
     @keyframes blink-dot {
       from, to { opacity: 0; }
       50% { opacity: 1; }
+    }
+
+    /* Media queries for different screen sizes */
+    @media screen and (max-width: 600px) {
+      .welcome-message {
+        font-size: 18px; /* Adjusted font size for smaller screens */
+      }
+
+      .time-box {
+        font-size: 12px; /* Adjusted font size for smaller screens */
+      }
     }
   </style>
   <title>Coming Soon</title>
