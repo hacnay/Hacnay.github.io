@@ -1,0 +1,2208 @@
+/* Fonts */
+:root {
+  --default-font: "Playfair Display", serif;
+  --heading-font: "Cormorant Garamond", serif;
+  --nav-font: "Lora", serif;
+}
+
+/* Global Colors - Luxurious color scheme with improved contrast */
+:root { 
+  --background-color: #faf7f5; /* Warm, soft off-white */
+  --default-color: #4b4b4b; /* Dark grey for text */
+  --heading-color: #2e2e2e; /* Slightly darker grey for headings */
+  --accent-color: #b78a56; /* Rich gold for accents */
+  --surface-color: #ffffff; /* Pure white for separation */
+  --contrast-color: #333333; /* Dark grey for contrast text on light backgrounds */
+}
+
+/* Nav Menu Colors - Enhanced for readability */
+:root {
+  --nav-color: #ffffff; /* Darker grey for nav links */
+  --nav-hover-color: #ffffff; /* Gold accent color on hover */
+  --nav-mobile-background-color: #faf7f5; /* Soft off-white for mobile menu */
+  --nav-dropdown-background-color: #faf7f5; /* Matches mobile menu */
+  --nav-dropdown-color: #4b4b4b; /* Dark grey for dropdown links */
+  --nav-dropdown-hover-color: #b78a56; /* Gold accent on hover */
+}
+
+/* Button Styles - Ensuring contrast and readability */
+.button {
+  background-color: #b78a56; /* Gold color for buttons */
+  color: #ffffff; /* White text for contrast */
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--default-font);
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #a67b43; /* Slightly darker gold on hover */
+}
+
+/* Color Presets - Luxurious color schemes for light and dark modes */
+.light-background {
+  --background-color: #f2efe9; /* Warm off-white */
+  --surface-color: #ffffff; /* Crisp white */
+}
+
+.dark-background {
+  --background-color: #1a1a1a; /* Deep black */
+  --default-color: #eaeaea; /* Light grey text */
+  --heading-color: #ffffff; /* White for headings */
+  --surface-color: #2e2e2e; /* Dark grey for surface elements */
+  --contrast-color: #fff7f7; /* Gold for contrast on dark surfaces */
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  border-bottom: 2px solid var(--accent-color);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  letter-spacing: 0.5px; /* Slight letter spacing for a more refined look */
+  margin-bottom: 1rem; /* Adds some breathing space below headings */
+}
+
+
+/*--------------------------------------------------------------
+# PHP Email Form Messages
+--------------------------------------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #b53636; /* Deep, elegant red for error messages */
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  border-radius: 4px; /* Soft corners for a refined look */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #4caf50; /* Rich green for success messages */
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  --background-color: rgba(0, 0, 0, 0); /* Transparent background initially */
+  --default-color: #ffffff; /* White text for a clean look */
+  --heading-color: #ffffff;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 15px 0;
+  transition: all 0.5s ease; /* Smooth transition for a more elegant effect */
+  z-index: 997;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 32px;
+  margin-right: 8px;
+  filter: brightness(1.2); /* Slightly enhance the logo brightness */
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+  letter-spacing: 1px; /* Adds a touch of sophistication */
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.2); /* Enhanced shadow when scrolled */
+}
+
+/* Global Header on Scroll
+------------------------------*/
+.scrolled .header {
+  --background-color: rgba(0, 0, 0, 0.9); /* Darker background for a more luxurious feel */
+  backdrop-filter: blur(10px); /* Add a blur effect for a premium look */
+}
+
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Navmenu - Desktop */
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color); /* Custom navigation text color */
+    padding: 18px 15px;
+    font-size: 16px;
+    font-family: var(--nav-font); /* Custom font for a premium feel */
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: color 0.3s, background-color 0.3s; /* Smooth transitions for hover effects */
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: transform 0.3s, color 0.3s; /* Smooth transition for icons */
+  }
+
+  .navmenu li:last-child a {
+    padding-right: 0;
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-hover-color); /* Highlight color for active and hovered items */
+    background-color: var(--accent-color); /* Add background color on hover for contrast */
+    border-radius: 5px; /* Rounded corners for a soft, luxurious feel */
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color); /* Custom background for dropdowns */
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 14px;
+    top: 130%;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s, top 0.3s; /* Smooth dropdown appearance */
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for dropdowns */
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color); /* Custom color for dropdown links */
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    color: var(--nav-dropdown-hover-color); /* Hover effect for dropdown items */
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+}
+
+/* Navmenu - Mobile */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    overflow-y: auto;
+    transition: all 0.3s ease-in-out; /* Smooth opening for mobile menu */
+    z-index: 9998;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for mobile menu */
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: color 0.3s, background-color 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth icon transitions */
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color);
+    background-color: var(--accent-color); /* Add background color on hover */
+    border-radius: 5px;
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg); /* Add rotation for active state */
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+
+  .mobile-nav-active .navmenu>ul {
+    display: block;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color); /* Custom default color */
+  background-color: var(--background-color); /* Custom background color */
+  font-size: 14px;
+  padding: 40px 0 0 0;
+  position: relative;
+}
+
+.footer .icon {
+  color: var(--accent-color); /* Accent color for icons */
+  margin-right: 15px;
+  font-size: 24px;
+  line-height: 0;
+  transition: color 0.3s; /* Smooth transition for icon hover */
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--heading-color); /* Custom heading color */
+}
+
+.footer .address p {
+  margin-bottom: 0px;
+  color: var(--default-color); /* Text color */
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Rounded for a luxurious feel */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%); /* Subtle border color */
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%); /* Subtle color */
+  margin-right: 10px;
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s; /* Smooth hover transition */
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color); /* Accent color on hover */
+  border-color: var(--accent-color); /* Accent color for border on hover */
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%); /* Subtle background color on hover */
+}
+
+.footer .copyright {
+  padding: 25px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%); /* Subtle border */
+  color: var(--default-color); /* Text color */
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 5px;
+  font-size: 13px;
+  color: var(--default-color); /* Text color */
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color); /* Background color */
+  transition: all 0.6s ease-out; /* Smooth transition for preloader */
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent; /* Custom preloader color */
+  border-radius: 50%; /* Circular preloader */
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite; /* Smooth preloader animation */
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color); /* Accent color for button */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Rounded for a luxurious feel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color); /* Contrast color for icon */
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%); /* Subtle hover effect */
+  color: var(--contrast-color);
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable AOS Animation Delay on Mobile Devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important; /* Disable delay for mobile */
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color); /* Text color */
+  background-color: var(--background-color); /* Background color */
+  padding: 160px 0 80px 0;
+  text-align: center;
+  position: relative;
+}
+
+.page-title:before {
+  content: "";
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%); /* Subtle background overlay */
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* Ensure overlay is behind content */
+}
+
+.page-title h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--heading-color); /* Heading color */
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--default-color); /* Breadcrumb text color */
+}
+
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%); /* Subtle separator color */
+}
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color); /* Text color */
+  background-color: var(--background-color); /* Background color */
+  padding: 60px 0;
+  scroll-margin-top: 90px;
+  overflow: hidden; /* Use hidden to handle overflow gracefully */
+}
+
+@media (max-width: 1199px) {
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  position: relative;
+  color: var(--heading-color); /* Heading color */
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px; /* Slightly increased width for a more prominent underline */
+  height: 4px; /* Thicker underline for a more luxurious feel */
+  background: var(--accent-color);
+  left: 50%;
+  transform: translateX(-50%); /* Center underline */
+  bottom: 0;
+}
+
+.section-title p {
+  margin-bottom: 0;
+  font-size: 16px; /* Adjust font size for consistency */
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 100px 0; /* Increased padding for a more spacious look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-background); /* Add a custom background if needed */
+}
+
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.6); /* Slightly darken the background image for better text visibility */
+}
+
+.hero:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 30%); /* Increased opacity for a more pronounced overlay */
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+  text-align: center; /* Center align text for a more balanced look */
+}
+
+.hero h2 {
+  margin: 0;
+  font-size: 72px; /* Increased font size for a grand appearance */
+  font-weight: 800; /* Increased font weight for a bolder look */
+  color: var(--hero-heading-color); /* Custom heading color */
+}
+
+.hero p {
+  margin: 10px 0 60px 0; /* Adjusted margins for better spacing */
+  font-size: 28px; /* Slightly increased font size for better readability */
+}
+
+.hero p span {
+  letter-spacing: 1.5px; /* Increased letter spacing for elegance */
+  border-bottom: 3px solid var(--accent-color); /* Thicker border for a more luxurious feel */
+}
+
+.hero .cta-btn {
+  margin: 15px 10px;
+  font-weight: 500; /* Slightly increased font weight for emphasis */
+  font-size: 16px; /* Increased font size for better readability */
+  letter-spacing: 1.5px; /* Increased letter spacing for a refined look */
+  display: inline-block;
+  padding: 12px 35px; /* Increased padding for a more luxurious button */
+  transition: background-color 0.3s, color 0.3s;
+  background: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.hero .cta-btn:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 30%);
+}
+
+.hero .cta-btn2 {
+  margin: 15px 10px;
+  font-weight: 500; /* Slightly increased font weight for emphasis */
+  font-size: 16px; /* Increased font size for better readability */
+  letter-spacing: 1.5px; /* Increased letter spacing for a refined look */
+  display: inline-block;
+  padding: 12px 35px; /* Increased padding for a more luxurious button */
+  border-radius: 4px; /* Added border-radius for a more refined button shape */
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--contrast-color);
+  border: 2px solid var(--accent-color);
+}
+
+.hero .cta-btn2:hover {
+  background: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 36px; /* Adjusted for smaller screens */
+  }
+
+  .hero p {
+    font-size: 22px; /* Adjusted for smaller screens */
+  }
+}
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .content h3 {
+  font-size: 2.5rem; /* Increased font size for a more prominent header */
+  font-weight: 700;
+  color: var(--heading-color); /* Custom color for a regal touch */
+  margin-bottom: 20px; /* Added margin for better spacing */
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  padding-bottom: 15px; /* Increased padding for a more spacious look */
+  font-size: 1.2rem; /* Slightly larger font size for better readability */
+}
+
+.about .content ul i {
+  font-size: 1.5rem; /* Increased icon size for better visibility */
+  margin-right: 10px; /* Increased margin for better spacing */
+  color: var(--accent-color);
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .content .read-more {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 18px; /* Increased font size for emphasis */
+  letter-spacing: 1.5px; /* Increased letter spacing for a more elegant look */
+  padding: 14px 28px; /* Increased padding for a more luxurious button */
+  border-radius: 8px; /* Rounded corners for a more refined look */
+  transition: background 0.3s, padding-right 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about .content .read-more i {
+  font-size: 20px; /* Increased icon size for better visibility */
+  margin-left: 10px; /* Increased margin for better spacing */
+  line-height: 0;
+  transition: margin-left 0.3s;
+}
+
+.about .content .read-more:hover {
+  background: color-mix(in srgb, var(--accent-color), black 30%);
+  padding-right: 25px; /* Increased padding on hover for a more interactive feel */
+}
+
+.about .content .read-more:hover i {
+  margin-left: 15px; /* Increased margin on hover for a more pronounced effect */
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services .service-item {
+  position: relative;
+  padding: 20px; /* Added padding for better spacing */
+  border-radius: 8px; /* Rounded corners for a refined look */
+  transition: box-shadow 0.3s; /* Added transition for smooth hover effect */
+}
+
+.services .service-item .icon {
+  background: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Slightly increased width */
+  height: 60px; /* Slightly increased height */
+  border-radius: 50%;
+  transition: background 0.5s, border-color 0.5s;
+  border: 2px solid var(--accent-color); /* Thicker border for a more luxurious look */
+  margin-bottom: 15px; /* Added margin for spacing between icon and title */
+}
+
+.services .service-item .icon i {
+  color: var(--contrast-color);
+  font-size: 28px; /* Increased icon size for better visibility */
+  line-height: 0;
+}
+
+.services .service-item:hover .icon {
+  background: var(--surface-color);
+  border-color: var(--surface-color); /* Changed border color on hover */
+}
+
+.services .service-item:hover .icon i {
+  color: var(--accent-color);
+}
+
+.services .service-item .title {
+  font-weight: 700;
+  margin-bottom: 20px; /* Increased margin for better spacing */
+  font-size: 20px; /* Increased font size for prominence */
+}
+
+.services .service-item .title a {
+  color: var(--heading-color);
+}
+
+.services .service-item .title a:hover {
+  color: var(--accent-color);
+}
+
+.services .service-item .description {
+  line-height: 26px; /* Increased line-height for better readability */
+  font-size: 16px; /* Increased font size for a more refined look */
+}
+
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features {
+  --default-color: #555;
+  --heading-color: #333;
+}
+
+.features .feature-box {
+  height: 100%;
+  padding: 40px 30px;
+  border-radius: 10px;
+}
+
+.features .feature-box i {
+  font-size: 44px;
+  display: inline-block;
+  line-height: 0;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.features .feature-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.features .feature-box p {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.features .feature-box.orange {
+  background-color: #fff3e2;
+}
+
+.features .feature-box.orange i {
+  color: #edb86e;
+}
+
+.features .feature-box.blue {
+  background-color: #deedfd;
+}
+
+.features .feature-box.blue i {
+  color: #20a5f8;
+}
+
+.features .feature-box.green {
+  background-color: #d5f1e4;
+}
+
+.features .feature-box.green i {
+  color: #48c88a;
+}
+
+.features .feature-box.red {
+  background-color: #fdeded;
+}
+
+.features .feature-box.red i {
+  color: #f28484;
+}
+
+/*--------------------------------------------------------------
+# Call To Action Section
+--------------------------------------------------------------*/
+.call-to-action {
+  padding: 120px 0;
+  position: relative;
+  clip-path: inset(0);
+}
+
+.call-to-action img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.call-to-action:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 50%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.call-to-action .container {
+  position: relative;
+  z-index: 3;
+}
+
+.call-to-action h3 {
+  color: var(--default-color);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.call-to-action p {
+  color: var(--default-color);
+}
+
+.call-to-action .cta-btn {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 4px;
+  transition: 0.5s;
+  margin: 10px;
+  border: 2px solid var(--contrast-color);
+  color: var(--contrast-color);
+}
+
+.call-to-action .cta-btn:hover {
+  background: var(--accent-color);
+  border: 2px solid var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+.portfolio .portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  color: var(--accent-color);
+}
+
+.portfolio .portfolio-filters li:first-child {
+  margin-left: 0;
+}
+
+.portfolio .portfolio-filters li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 575px) {
+  .portfolio .portfolio-filters li {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+
+.portfolio .portfolio-item {
+  position: relative;
+}
+
+.portfolio .portfolio-item .portfolio-info {
+  background-color: color-mix(in srgb, var(--surface-color), transparent 10%);
+  opacity: 0;
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  padding: 15px;
+}
+
+.portfolio .portfolio-item .portfolio-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  padding-right: 50px;
+}
+
+.portfolio .portfolio-item .portfolio-info p {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 14px;
+  margin-bottom: 0;
+  padding-right: 50px;
+}
+
+.portfolio .portfolio-item .portfolio-info .preview-link,
+.portfolio .portfolio-item .portfolio-info .details-link {
+  position: absolute;
+  right: 50px;
+  font-size: 24px;
+  top: calc(50% - 14px);
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  transition: 0.3s;
+  line-height: 0;
+}
+
+.portfolio .portfolio-item .portfolio-info .preview-link:hover,
+.portfolio .portfolio-item .portfolio-info .details-link:hover {
+  color: var(--accent-color);
+}
+
+.portfolio .portfolio-item .portfolio-info .details-link {
+  right: 14px;
+  font-size: 28px;
+}
+
+.portfolio .portfolio-item:hover .portfolio-info {
+  opacity: 1;
+  bottom: 20px;
+}
+
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item .testimonial-content {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 30px;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  border-radius: 50%;
+  border: 4px solid var(--background-color);
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin: 0 0 10px 0;
+}
+
+.testimonials .testimonial-item .stars i {
+  color: #ffc107;
+  margin: 0 1px;
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--accent-color), transparent 50%);
+  font-size: 26px;
+  line-height: 0;
+}
+
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+}
+
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 30px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Team Section
+--------------------------------------------------------------*/
+.team .team-member {
+  background-color: var(--surface-color);
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow for a more premium look */
+  overflow: hidden;
+  border-radius: 12px; /* Larger border-radius for a refined appearance */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+}
+
+.team .team-member:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.team .team-member .member-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0; /* Rounded top corners */
+}
+
+.team .team-member .social {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 50px; /* Increased height for a more prominent social bar */
+  opacity: 0;
+  transition: ease-in-out 0.3s;
+  background: color-mix(in srgb, var(--background-color), transparent 20%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+}
+
+.team .team-member:hover .social {
+  opacity: 1; /* Show social bar on hover */
+}
+
+.team .team-member .social a {
+  transition: color 0.3s;
+  color: var(--heading-color);
+  margin: 0 15px; /* Increased margin for better spacing */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team .team-member .social a i {
+  line-height: 0;
+}
+
+.team .team-member .social a:hover {
+  color: var(--accent-color);
+}
+
+.team .team-member .social i {
+  font-size: 20px; /* Slightly larger icons for better visibility */
+  margin: 0 5px; /* Increased margin for better spacing */
+}
+
+.team .team-member .member-info {
+  padding: 30px 20px; /* Increased padding for a more spacious feel */
+  text-align: center;
+}
+
+.team .team-member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 10px; /* Increased margin for better spacing */
+  font-size: 20px; /* Larger font size for emphasis */
+  color: var(--heading-color); /* Use primary heading color */
+}
+
+.team .team-member .member-info span {
+  display: block;
+  font-size: 14px; /* Increased font size for readability */
+  font-weight: 400;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.team .team-member .member-info p {
+  font-style: italic;
+  font-size: 15px; /* Increased font size for better readability */
+  line-height: 28px; /* Increased line-height for a more luxurious feel */
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-item+.info-item {
+  margin-top: 50px; /* Increased margin for better spacing */
+}
+
+.contact .info-item i {
+  color: var(--contrast-color); /* Adjusted for better visibility */
+  background: color-mix(in srgb, var(--accent-color), transparent 85%); /* Refined background color */
+  font-size: 24px; /* Slightly larger icon for emphasis */
+  width: 50px; /* Increased size for better visibility */
+  height: 50px; /* Increased size for better visibility */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px; /* Larger border-radius for a more refined look */
+  transition: all 0.3s ease-in-out;
+  margin-right: 20px; /* Increased margin for better spacing */
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 20px; /* Increased font size for better readability */
+  font-weight: 700;
+  margin-bottom: 10px; /* Increased margin for better spacing */
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 15px; /* Increased font size for better readability */
+}
+
+.contact .info-item:hover i {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.contact .php-email-form {
+  height: auto; /* Adjusted height for better flexibility */
+  max-width: 600px; /* Set a max-width for better layout control */
+  margin: 0 auto; /* Center the form */
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  font-size: 16px; /* Increased font size for better readability */
+  padding: 15px 20px; /* Increased padding for a more spacious feel */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners for a refined look */
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 60%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  transition: border-color 0.3s;
+}
+
+.contact .php-email-form input[type=text]:focus,
+.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+  outline: none; /* Remove default outline on focus */
+}
+
+.contact .php-email-form input[type=text]::placeholder,
+.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.contact .php-email-form button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: 0;
+  padding: 12px 40px; /* Increased padding for a more substantial button */
+  font-size: 16px; /* Larger font size for better readability */
+  border-radius: 50px; /* Rounded corners for a more refined look */
+  transition: 0.4s;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details .portfolio-details-slider img {
+  width: 100%;
+}
+
+.portfolio-details .swiper-wrapper {
+  height: auto;
+}
+
+.portfolio-details .swiper-button-prev,
+.portfolio-details .swiper-button-next {
+  width: 48px;
+  height: 48px;
+}
+
+.portfolio-details .swiper-button-prev:after,
+.portfolio-details .swiper-button-next:after {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.15);
+  font-size: 24px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.portfolio-details .swiper-button-prev:hover:after,
+.portfolio-details .swiper-button-next:hover:after {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 575px) {
+
+  .portfolio-details .swiper-button-prev,
+  .portfolio-details .swiper-button-next {
+    display: none;
+  }
+}
+
+.portfolio-details .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.portfolio-details .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-info h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: 0;
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.portfolio-details .portfolio-info ul strong {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 14px;
+}
+
+.portfolio-details .portfolio-info .btn-visit {
+  padding: 8px 40px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.portfolio-details .portfolio-info .btn-visit:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item {
+  padding: 30px 30px 0 30px;
+  position: relative;
+  background: color-mix(in srgb, var(--default-color), transparent 97%);
+  margin-bottom: 50px;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .testimonial-img {
+  width: 90px;
+  border-radius: 50px;
+  border: 6px solid var(--background-color);
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0 5px 0;
+  padding-top: 20px;
+}
+
+.portfolio-details .portfolio-description .testimonial-item h4 {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-left,
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--accent-color), transparent 50%);
+  font-size: 26px;
+  line-height: 0;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-description .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.portfolio-details .portfolio-description .testimonial-item p {
+  font-style: italic;
+  margin: 0 0 15px 0 0 0;
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Service Details Section
+--------------------------------------------------------------*/
+.service-details .services-list {
+  background-color: var(--surface-color);
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+}
+
+.service-details .services-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+}
+
+.service-details .services-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.service-details .services-list a:hover {
+  border-color: var(--accent-color);
+}
+
+.service-details .services-img {
+  margin-bottom: 20px;
+}
+
+.service-details h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.service-details h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.service-details p {
+  font-size: 15px;
+}
+
+.service-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.service-details ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.service-details ul i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+.starter-section {
+  /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Blog Posts Section
+--------------------------------------------------------------*/
+.blog-posts article {
+  background-color: var(--surface-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.blog-posts .post-img {
+  max-height: 240px;
+  margin: -30px -30px 15px -30px;
+  overflow: hidden;
+}
+
+.blog-posts .post-category {
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 10px;
+}
+
+.blog-posts .title {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.blog-posts .title a {
+  color: var(--heading-color);
+  transition: 0.3s;
+}
+
+.blog-posts .title a:hover {
+  color: var(--accent-color);
+}
+
+.blog-posts .post-author-img {
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.blog-posts .post-author {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.blog-posts .post-date {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Blog Pagination Section
+--------------------------------------------------------------*/
+.blog-pagination {
+  padding-top: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.blog-pagination ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.blog-pagination li {
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.blog-pagination li a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-pagination li a.active,
+.blog-pagination li a:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.blog-pagination li a.active a,
+.blog-pagination li a:hover a {
+  color: var(--contrast-color);
+}
+
+/*--------------------------------------------------------------
+# Blog Details Section
+--------------------------------------------------------------*/
+.blog-details {
+  padding-bottom: 30px;
+}
+
+.blog-details .article {
+  background-color: var(--surface-color);
+  padding: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.blog-details .post-img {
+  margin: -30px -30px 20px -30px;
+  overflow: hidden;
+}
+
+.blog-details .title {
+  color: var(--heading-color);
+  font-size: 28px;
+  font-weight: 700;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.blog-details .content {
+  margin-top: 20px;
+}
+
+.blog-details .content h3 {
+  font-size: 22px;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.blog-details .content blockquote {
+  overflow: hidden;
+  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+  padding: 60px;
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.blog-details .content blockquote p {
+  color: var(--default-color);
+  line-height: 1.6;
+  margin-bottom: 0;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.blog-details .content blockquote:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--accent-color);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog-details .meta-top {
+  margin-top: 20px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.blog-details .meta-top ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-details .meta-top ul li+li {
+  padding-left: 20px;
+}
+
+.blog-details .meta-top i {
+  font-size: 16px;
+  margin-right: 8px;
+  line-height: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.blog-details .meta-top a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 14px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.blog-details .meta-bottom {
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.blog-details .meta-bottom i {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  display: inline;
+}
+
+.blog-details .meta-bottom a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  transition: 0.3s;
+}
+
+.blog-details .meta-bottom a:hover {
+  color: var(--accent-color);
+}
+
+.blog-details .meta-bottom .cats {
+  list-style: none;
+  display: inline;
+  padding: 0 20px 0 0;
+  font-size: 14px;
+}
+
+.blog-details .meta-bottom .cats li {
+  display: inline-block;
+}
+
+.blog-details .meta-bottom .tags {
+  list-style: none;
+  display: inline;
+  padding: 0;
+  font-size: 14px;
+}
+
+.blog-details .meta-bottom .tags li {
+  display: inline-block;
+}
+
+.blog-details .meta-bottom .tags li+li::before {
+  padding-right: 6px;
+  color: var(--default-color);
+  content: ",";
+}
+
+.blog-details .meta-bottom .share {
+  font-size: 16px;
+}
+
+.blog-details .meta-bottom .share i {
+  padding-left: 5px;
+}
+
+/*--------------------------------------------------------------
+# Blog Comments Section
+--------------------------------------------------------------*/
+.blog-comments {
+  padding: 10px 0;
+}
+
+.blog-comments .comments-count {
+  font-weight: bold;
+}
+
+.blog-comments .comment {
+  margin-top: 30px;
+  position: relative;
+}
+
+.blog-comments .comment .comment-img {
+  margin-right: 14px;
+}
+
+.blog-comments .comment .comment-img img {
+  width: 60px;
+}
+
+.blog-comments .comment h5 {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.blog-comments .comment h5 a {
+  font-weight: bold;
+  color: var(--default-color);
+  transition: 0.3s;
+}
+
+.blog-comments .comment h5 a:hover {
+  color: var(--accent-color);
+}
+
+.blog-comments .comment h5 .reply {
+  padding-left: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.blog-comments .comment h5 .reply i {
+  font-size: 20px;
+}
+
+.blog-comments .comment time {
+  display: block;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 5px;
+}
+
+.blog-comments .comment.comment-reply {
+  padding-left: 40px;
+}
+
+/*--------------------------------------------------------------
+# Comment Form Section
+--------------------------------------------------------------*/
+.comment-form {
+  padding-top: 10px;
+}
+
+.comment-form form {
+  background-color: var(--surface-color);
+  margin-top: 30px;
+  padding: 30px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.comment-form form h4 {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.comment-form form p {
+  font-size: 14px;
+}
+
+.comment-form form input {
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 10px 10px;
+}
+
+.comment-form form input:focus {
+  color: var(--default-color);
+  background-color: var(--surface-color);
+  box-shadow: none;
+  border-color: var(--accent-color);
+}
+
+.comment-form form input::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
+.comment-form form textarea {
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  border-radius: 4px;
+  padding: 10px 10px;
+  font-size: 14px;
+  height: 120px;
+}
+
+.comment-form form textarea:focus {
+  color: var(--default-color);
+  box-shadow: none;
+  border-color: var(--accent-color);
+  background-color: var(--surface-color);
+}
+
+.comment-form form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
+.comment-form form .form-group {
+  margin-bottom: 25px;
+}
+
+.comment-form form .btn-primary {
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: 0;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.comment-form form .btn-primary:hover {
+  color: var(--contrast-color);
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/*--------------------------------------------------------------
+# Widgets
+--------------------------------------------------------------*/
+.widgets-container {
+  margin: 80px 0 40px 0; /* Increased margin for better spacing */
+}
+
+.widget-title {
+  color: var(--heading-color);
+  font-size: 24px; /* Increased font size for better emphasis */
+  font-weight: 700; /* Bolder font for a stronger appearance */
+  padding: 0 0 0 15px; /* Adjusted padding for alignment */
+  margin: 0 0 30px 0; /* Increased bottom margin for better spacing */
+  border-left: 6px solid var(--accent-color); /* Thicker border for a more prominent look */
+}
+
+.widget-item {
+  margin-bottom: 40px; /* Increased margin for better spacing */
+  background-color: color-mix(in srgb, var(--default-color), transparent 95%); /* Refined background color */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%); /* Adjusted border color */
+  padding: 40px; /* Increased padding for a more spacious feel */
+  border-radius: 8px; /* Rounded corners for a more refined look */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+}
+
+.widget-item:last-child {
+  margin-bottom: 0;
+}
+
+.search-widget form {
+  background: var(--background-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 75%);
+  padding: 5px 15px; /* Adjusted padding for better alignment */
+  position: relative;
+  transition: 0.3s;
+  border-radius: 8px; /* Rounded corners for a more refined look */
+}
+
+.search-widget form input[type=text] {
+  border: 0;
+  padding: 8px;
+  border-radius: 8px 0 0 8px; /* Rounded corners on the left side */
+  width: calc(100% - 50px); /* Adjusted width to fit the button */
+  background-color: var(--background-color);
+  color: var(--default-color);
+}
+
+.search-widget form input[type=text]:focus {
+  outline: none;
+}
+
+.search-widget form button {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  font-size: 18px; /* Increased font size for better visibility */
+  padding: 0 20px; /* Increased padding for a more substantial button */
+  margin: -1px;
+  transition: 0.3s;
+  border-radius: 0 8px 8px 0; /* Rounded corners on the right side */
+  line-height: 0;
+}
+
+.search-widget form button i {
+  line-height: 0;
+}
+
+.search-widget form button:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+.search-widget form:is(:focus-within) {
+  border-color: var(--accent-color);
+}
+
+.categories-widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories-widget ul li {
+  padding-bottom: 15px; /* Increased padding for better spacing */
+}
+
+.categories-widget ul li:last-child {
+  padding-bottom: 0;
+}
+
+.categories-widget ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  transition: 0.3s;
+  font-size: 16px; /* Increased font size for better readability */
+}
+
+.categories-widget ul a:hover {
+  color: var(--accent-color);
+}
+
+.categories-widget ul a span {
+  padding-left: 8px; /* Increased padding for better spacing */
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+  font-size: 15px; /* Increased font size for better readability */
+}
+
+.recent-posts-widget .post-item {
+  display: flex;
+  margin-bottom: 20px; /* Increased margin for better spacing */
+}
+
+.recent-posts-widget .post-item:last-child {
+  margin-bottom: 0;
+}
+
+.recent-posts-widget .post-item img {
+  width: 90px; /* Increased width for better visibility */
+  margin-right: 20px; /* Increased margin for better spacing */
+}
+
+.recent-posts-widget .post-item h4 {
+  font-size: 16px; /* Increased font size for better readability */
+  font-weight: 700; /* Bold font for emphasis */
+  margin-bottom: 8px; /* Adjusted margin for better spacing */
+}
+
+.recent-posts-widget .post-item h4 a {
+  color: var(--default-color);
+  transition: 0.3s;
+}
+
+.recent-posts-widget .post-item h4 a:hover {
+  color: var(--accent-color);
+}
+
+.recent-posts-widget .post-item time {
+  display: block;
+  font-style: italic;
+  font-size: 15px; /* Increased font size for better readability */
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.tags-widget ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tags-widget ul li {
+  display: inline-block;
+}
+
+.tags-widget ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 15px; /* Increased font size for better readability */
+  padding: 8px 16px; /* Adjusted padding for a more spacious feel */
+  margin: 0 8px 10px 0; /* Adjusted margin for better spacing */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.tags-widget ul a:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border: 1px solid var(--accent-color);
+}
+
+.tags-widget ul a span {
+  padding-left: 8px; /* Increased padding for better spacing */
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+  font-size: 15px; /* Increased font size for better readability */
+}
