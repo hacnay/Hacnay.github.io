@@ -368,30 +368,68 @@
 
       </div>
 
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSeGbx2p0urbX7X8Fk69DMbs3uSwkeQAzFGjXXMkhRt9BAtCtA/formResponse" 
-      method="POST" 
-      target="hidden_iframe" 
-      onsubmit="submitted=true;">
-  <input type="text" name="entry.350312141" placeholder="Your Name" required>
-  <input type="email" name="entry.1453966446" placeholder="Your Email" required>
-  <input type="text" name="entry.1731122688" placeholder="Subject" required>
-  <textarea name="entry.1086125074" placeholder="Message" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
+<!-- Contact Form -->
+<div class="col-lg-8">
+  <form action="https://docs.google.com/forms/d/e/1FAIpQLSeGbx2p0urbX7X8Fk69DMbs3uSwkeQAzFGjXXMkhRt9BAtCtA/formResponse"
+        method="POST" 
+        class="php-email-form"
+        data-aos="fade-up" 
+        data-aos-delay="200"
+        target="hidden_iframe"
+        onsubmit="submitted=true;">
+    
+    <div class="row gy-4">
 
-<!-- Hidden iframe to prevent Google Form from opening -->
-<iframe name="hidden_iframe" style="display:none;"></iframe>
+      <div class="col-md-6">
+        <input type="text" name="entry.350312141" class="form-control" placeholder="Your Name" required>
+      </div>
+
+      <div class="col-md-6">
+        <input type="email" name="entry.1453966446" class="form-control" placeholder="Your Email" required>
+      </div>
+
+      <div class="col-md-12">
+        <input type="text" name="entry.1731122688" class="form-control" placeholder="Subject" required>
+      </div>
+
+      <div class="col-md-12">
+        <textarea class="form-control" name="entry.1086125074" rows="6" placeholder="Message" required></textarea>
+      </div>
+
+      <div class="col-md-12 text-center">
+        <div class="loading" style="display: none;">Loading...</div>
+        <div class="error-message" style="display: none;"></div>
+        <div class="sent-message" style="display: none;">Your message has been sent. Thank you!</div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+
+    </div>
+  </form>
+  
+  <!-- Hidden iframe to prevent Google Forms from opening -->
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</div>
+<!-- End Contact Form -->
 
 <script>
   var submitted = false;
   document.querySelector("form").addEventListener("submit", function() {
+    document.querySelector(".loading").style.display = "block"; // Show loading text
+
     setTimeout(function() {
       if (submitted) {
-        window.location.href = "https://yourwebsite.com/thank-you"; // Change this URL
+        document.querySelector(".loading").style.display = "none";
+        document.querySelector(".sent-message").style.display = "block";
+        
+        setTimeout(() => {
+          window.location.href = "https://hacnay.com/thank-you"; // Change this URL
+        }, 2000);
       }
     }, 1000);
   });
 </script>
+
 
     </div>
 
