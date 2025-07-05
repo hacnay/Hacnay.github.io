@@ -23,14 +23,14 @@
 
     html, body {
       font-family: 'Rubik', sans-serif;
-      background: radial-gradient(ellipse at bottom, var(--bg-dark) 0%, #000 100%);
+      background: var(--bg-dark);
       color: #ffffff;
       height: 100%;
       width: 100%;
       overflow: hidden;
     }
 
-    canvas {
+    #blockchain-bg {
       position: fixed;
       top: 0;
       left: 0;
@@ -40,7 +40,7 @@
     .overlay {
       position: absolute;
       inset: 0;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(3px);
       background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
@@ -51,6 +51,7 @@
       align-items: center;
       height: 100vh;
       padding: 20px;
+      text-align: center;
     }
 
     .glass {
@@ -62,7 +63,6 @@
       width: 100%;
       box-shadow: 0 0 30px rgba(0, 255, 200, 0.2);
       backdrop-filter: blur(12px);
-      text-align: center;
     }
 
     h1 {
@@ -140,7 +140,7 @@
 </head>
 <body>
 
-<canvas id="matrix"></canvas>
+<canvas id="blockchain-bg"></canvas>
 <div class="overlay"></div>
 
 <div class="container">
@@ -161,7 +161,7 @@
   </div>
 </div>
 
-<div class="footer">© 2025 HACNAY — Luxury in Blockchain & Beyond</div>
+<div class="footer">© 2025 HACNAY — All rights reserved.</div>
 
 <script>
 // Countdown Timer
@@ -183,37 +183,61 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Matrix Background
-const canvas = document.getElementById("matrix");
+// Blockchain-style Particle Animation
+const canvas = document.getElementById("blockchain-bg");
 const ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight;
+
 canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-const letters = "HACNAY10101011000101";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array.from({ length: columns }).fill(1);
-
-function drawMatrix() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#00ffe5";
-  ctx.font = `${fontSize}px monospace`;
-
-  for (let i = 0; i < drops.length; i++) {
-    const text = letters.charAt(Math.floor(Math.random() * letters.length));
-    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
+let nodes = [];
+for (let i = 0; i < 80; i++) {
+  nodes.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.8,
+    vy: (Math.random() - 0.5) * 0.8
+  });
 }
-setInterval(drawMatrix, 33);
+
+function animateBlockchain() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  nodes.forEach((node, i) => {
+    node.x += node.vx;
+    node.y += node.vy;
+
+    if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+    if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, 2, 0, 2 * Math.PI);
+    ctx.fillStyle = "#00ffe5";
+    ctx.fill();
+
+    // Connect with nearby nodes
+    for (let j = i + 1; j < nodes.length; j++) {
+      const dx = node.x - nodes[j].x;
+      const dy = node.y - nodes[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 120) {
+        ctx.beginPath();
+        ctx.moveTo(node.x, node.y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.strokeStyle = `rgba(0, 255, 229, ${1 - distance / 120})`;
+        ctx.stroke();
+      }
+    }
+  });
+
+  requestAnimationFrame(animateBlockchain);
+}
+animateBlockchain();
 
 window.addEventListener('resize', () => {
-  canvas.height = window.innerHeight;
   canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
 </script>
 
