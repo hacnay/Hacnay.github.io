@@ -9,8 +9,8 @@
     :root {
       --primary: #00ffe5;
       --text-muted: #cccccc;
-      --bg-dark: #0d0d0d;
-      --glass-bg: rgba(255, 255, 255, 0.05);
+      --bg-dark: transparent;
+      --glass-bg: rgba(0, 0, 0, 0.65);
       --glass-border: rgba(255, 255, 255, 0.1);
       --text-soft: #aaa;
     }
@@ -34,15 +34,10 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -2;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      backdrop-filter: blur(3px);
-      background: rgba(0, 0, 0, 0.4);
-      z-index: -1;
+      z-index: -10;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
     }
 
     .container {
@@ -52,6 +47,8 @@
       height: 100vh;
       padding: 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .glass {
@@ -62,7 +59,6 @@
       max-width: 600px;
       width: 100%;
       box-shadow: 0 0 30px rgba(0, 255, 200, 0.2);
-      backdrop-filter: blur(12px);
     }
 
     h1 {
@@ -111,6 +107,7 @@
       text-align: center;
       font-size: 0.8rem;
       color: #666;
+      z-index: 1;
     }
 
     @media (max-width: 480px) {
@@ -141,7 +138,6 @@
 <body>
 
 <canvas id="blockchain-bg"></canvas>
-<div class="overlay"></div>
 
 <div class="container">
   <div class="glass">
@@ -164,17 +160,14 @@
 <div class="footer">© 2025 HACNAY — All rights reserved.</div>
 
 <script>
-// Countdown Timer
 const targetDate = new Date("2025-12-31T00:00:00").getTime();
 function updateCountdown() {
   const now = new Date().getTime();
   const diff = targetDate - now;
-
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
   document.getElementById("days").textContent = String(days).padStart(2, '0');
   document.getElementById("hours").textContent = String(hours).padStart(2, '0');
   document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
@@ -183,64 +176,52 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Blockchain-style mesh animation
 const canvas = document.getElementById("blockchain-bg");
 const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 let nodes = [];
-const NUM_NODES = 100;
-
+const NUM_NODES = 120;
 for (let i = 0; i < NUM_NODES; i++) {
   nodes.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 1.2,
-    vy: (Math.random() - 0.5) * 1.2
+    vx: (Math.random() - 0.5) * 1.5,
+    vy: (Math.random() - 0.5) * 1.5
   });
 }
-
 function animateBlockchain() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   nodes.forEach((node, i) => {
     node.x += node.vx;
     node.y += node.vy;
-
     if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
     if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
-
     ctx.beginPath();
     ctx.arc(node.x, node.y, 2.5, 0, 2 * Math.PI);
     ctx.fillStyle = "#00ffe5";
     ctx.fill();
-
     for (let j = i + 1; j < nodes.length; j++) {
       const dx = node.x - nodes[j].x;
       const dy = node.y - nodes[j].y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-
       if (distance < 150) {
         ctx.beginPath();
         ctx.moveTo(node.x, node.y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
         ctx.strokeStyle = `rgba(0, 255, 229, ${1 - distance / 150})`;
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
     }
   });
-
   requestAnimationFrame(animateBlockchain);
 }
 animateBlockchain();
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
 </script>
 
 </body>
