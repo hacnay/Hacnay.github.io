@@ -4,75 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HACNAY | Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: black;
-      color: #00ffcc;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: radial-gradient(ellipse at bottom, #0d0d0d 0%, #000000 100%);
+      color: #ffffff;
       overflow: hidden;
     }
+
     canvas {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(4px);
+      background: rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
+
     .container {
       display: flex;
       flex-direction: column;
-      height: 100vh;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      height: 100vh;
       padding: 20px;
+      text-align: center;
     }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 200, 0.2);
+      max-width: 600px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+    }
+
     h1 {
+      font-family: 'Orbitron', sans-serif;
       font-size: 3rem;
+      color: #00ffe5;
+      margin-bottom: 20px;
       letter-spacing: 2px;
-      margin-bottom: 10px;
     }
-    p {
+
+    p.subtitle {
       font-size: 1.2rem;
-      color: #ffffffb0;
-      margin-bottom: 40px;
+      color: #ccc;
+      margin-bottom: 30px;
     }
+
     .timer {
       display: flex;
+      justify-content: center;
       gap: 30px;
+      font-size: 1.6rem;
+      color: #00ffd9;
+      margin-bottom: 30px;
+    }
+
+    .timer div span {
+      font-weight: bold;
+      display: block;
       font-size: 2rem;
     }
-    .timer div {
-      text-align: center;
+
+    .contact {
+      font-size: 0.95rem;
+      color: #aaa;
     }
+
     .footer {
       position: absolute;
       bottom: 20px;
-      color: #999;
-      font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
+      font-size: 0.8rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
 <canvas id="matrix"></canvas>
+<div class="overlay"></div>
 
 <div class="container">
-  <h1>HACNAY</h1>
-  <p>Revolutionizing the future of tech — Blockchain or beyond, stay tuned.</p>
-  
-  <div class="timer" id="countdown">
-    <div><span id="days">00</span><br>Days</div>
-    <div><span id="hours">00</span><br>Hours</div>
-    <div><span id="minutes">00</span><br>Minutes</div>
-    <div><span id="seconds">00</span><br>Seconds</div>
-  </div>
+  <div class="glass">
+    <h1>HACNAY</h1>
+    <p class="subtitle">A New Wave of Decentralized Innovation<br><em>Coming Soon...</em></p>
 
-  <p style="margin-top: 30px;">Contact: <a href="mailto:info@hacnay.com" style="color:#00ffff;">info@hacnay.com</a></p>
+    <div class="timer" id="countdown">
+      <div><span id="days">00</span>Days</div>
+      <div><span id="hours">00</span>Hours</div>
+      <div><span id="minutes">00</span>Minutes</div>
+      <div><span id="seconds">00</span>Seconds</div>
+    </div>
+
+    <div class="contact">
+      Contact details will be available upon launch.
+    </div>
+  </div>
 </div>
 
-<div class="footer">© 2025 HACNAY. All rights reserved.</div>
+<div class="footer">© 2025 HACNAY — Luxury in Blockchain & Beyond</div>
 
 <script>
 // Countdown Timer
@@ -80,7 +130,6 @@ const targetDate = new Date("2025-12-31T00:00:00").getTime();
 const updateCountdown = () => {
   const now = new Date().getTime();
   const diff = targetDate - now;
-
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -94,12 +143,14 @@ const updateCountdown = () => {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Matrix Background
+// Matrix Animation
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
+
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+const letters = "HACNAY10101011000101";
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array.from({ length: columns }).fill(1);
@@ -107,21 +158,19 @@ const drops = Array.from({ length: columns }).fill(1);
 function drawMatrix() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#00ffcc";
-  ctx.font = `${fontSize}px Orbitron`;
+  ctx.fillStyle = "#00ffe5";
+  ctx.font = `${fontSize}px monospace`;
 
-  drops.forEach((y, i) => {
-    const text = letters[Math.floor(Math.random() * letters.length)];
-    const x = i * fontSize;
-    ctx.fillText(text, x, y * fontSize);
-
-    if (y * fontSize > canvas.height && Math.random() > 0.975) {
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
       drops[i] = 0;
     }
     drops[i]++;
-  });
+  }
 }
-setInterval(drawMatrix, 33);
+setInterval(drawMatrix, 35);
 </script>
 
 </body>
