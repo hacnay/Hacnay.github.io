@@ -1,526 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Hacnay</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <!-- Favicons -->
-  <link href="assets/img/hacnay_Icon.jpeg" rel="icon">
-  <link href="assets/img/hacnay_Icon.jpeg" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HACNAY | Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      color: #00ffcc;
+      overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #ffffffb0;
+      margin-bottom: 40px;
+    }
+    .timer {
+      display: flex;
+      gap: 30px;
+      font-size: 2rem;
+    }
+    .timer div {
+      text-align: center;
+    }
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      color: #999;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
+<body>
 
-<body class="index-page">
+<canvas id="matrix"></canvas>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/hacnay_Icon.jpeg" alt="">
-        <h1 class="sitename">HACNAY</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="assets/img/hacnay_bg.jpg" class="hero-bg" alt="" data-aos="fade-in">
-
-      <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
-        <img src="assets/img/hacnay_logo.png" class="img-fluid mb-3" alt="">
-        <h2>Where Innovation Meets Security</h2>
-        <p>We create <span class="typed" data-typed-items="Secure and Innovative Web Solutions,Functional Websites, Mobile Apps, Digital Presence"></span></p>
-        <div>
-          <a href="#about" class="cta-btn">Get Started</a>
-          <a href="#services" class="cta-btn2">Our Services</a>
-        </div>
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>At Hacnay, we blend cutting-edge technology with robust security to deliver exceptional web design solutions.</p>
-      </div><!-- End Section Title -->
-    
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="About Hacnay">
-          </div>
-    
-          <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Our Commitment to Excellence</h3>
-            <p class="fst-italic">
-              At Hacnay, we are dedicated to providing secure, innovative web solutions tailored to your needs.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Innovative and cutting-edge design tailored to your brand.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Top-notch security to protect your data and ensure peace of mind.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Comprehensive support and maintenance to keep your site running smoothly.</span></li>
-            </ul>
-            <a href="#services" class="read-more"><span>Learn More About Our Services</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /About Section -->
-
-    <!-- Services Section -->
-<section id="services" class="services section light-background">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Services</h2>
-    <p>At Hacnay, we offer a range of services designed to ensure your web presence is secure, innovative, and impactful.</p>
-  </div><!-- End Section Title -->
-
-  <div class="container">
-    <div class="row gy-4">
-
-      <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-        <div class="icon flex-shrink-0"><i class="bi bi-palette"></i></div>
-        <div>
-          <h4 class="title"><a href="#contact" class="stretched-link">Web Design</a></h4>
-          <p class="description">Creating custom, responsive, and visually stunning designs that align with your brand identity.</p>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon flex-shrink-0"><i class="bi bi-shield-lock"></i></div>
-        <div>
-          <h4 class="title"><a href="#contact" class="stretched-link">Web Development</a></h4>
-          <p class="description">Building secure, scalable, and high-performing websites using the latest technologies.</p>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-        <div class="icon flex-shrink-0"><i class="bi bi-basket"></i></div>
-        <div>
-          <h4 class="title"><a href="#contact" class="stretched-link">E-commerce Solutions</a></h4>
-          <p class="description">Developing secure and user-friendly online stores that enhance the shopping experience.</p>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-        <div class="icon flex-shrink-0"><i class="bi bi-megaphone"></i></div>
-        <div>
-          <h4 class="title"><a href="#contact" class="stretched-link">SEO & Digital Marketing</a></h4>
-          <p class="description">Optimizing your website and content to rank higher in search engines and reach your target audience.</p>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-        <div class="icon flex-shrink-0"><i class="bi bi-tools"></i></div>
-        <div>
-          <h4 class="title"><a href="#contact" class="stretched-link">Maintenance & Support</a></h4>
-          <p class="description">Providing ongoing support and updates to keep your website secure and up-to-date.</p>
-        </div>
-      </div><!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-        <div class="icon flex-shrink-0"><i class="bi bi-lightbulb"></i></div>
-        <div>
-          <h4 class="title"><a href="#contact" class="stretched-link">Custom Solutions</a></h4>
-          <p class="description">Offering tailored web solutions that meet your unique business requirements and goals.</p>
-        </div>
-      </div><!-- End Service Item -->
-
-    </div>
+<div class="container">
+  <h1>HACNAY</h1>
+  <p>Revolutionizing the future of tech — Blockchain or beyond, stay tuned.</p>
+  
+  <div class="timer" id="countdown">
+    <div><span id="days">00</span><br>Days</div>
+    <div><span id="hours">00</span><br>Hours</div>
+    <div><span id="minutes">00</span><br>Minutes</div>
+    <div><span id="seconds">00</span><br>Seconds</div>
   </div>
 
-</section><!-- End Services Section -->
-
-
-   <!-- Features Section -->
-<section id="features" class="features section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Features</h2>
-    <p>Explore the key features that set Hacnay apart in delivering secure and innovative web solutions.</p>
-  </div><!-- End Section Title -->
-
-  <div class="container">
-    <div class="row gy-4">
-
-      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-        <div class="feature-box orange">
-          <i class="bi bi-award"></i>
-          <h4>Cutting-Edge Design</h4>
-          <p>We prioritize innovative and aesthetically pleasing designs that resonate with your brand's identity.</p>
-        </div>
-      </div><!-- End Feature Box -->
-
-      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-        <div class="feature-box blue">
-          <i class="bi bi-patch-check"></i>
-          <h4>Robust Security</h4>
-          <p>Our web solutions are built with advanced security measures to protect your data and digital assets.</p>
-        </div>
-      </div><!-- End Feature Box -->
-
-      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-        <div class="feature-box green">
-          <i class="bi bi-sunrise"></i>
-          <h4>Seamless Performance</h4>
-          <p>Enjoy fast, reliable, and scalable websites that provide an exceptional user experience across devices.</p>
-        </div>
-      </div><!-- End Feature Box -->
-
-      <div class="col-xl-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-        <div class="feature-box red">
-          <i class="bi bi-shield-check"></i>
-          <h4>24/7 Support</h4>
-          <p>Our dedicated support team is available around the clock to ensure your site runs smoothly.</p>
-        </div>
-      </div><!-- End Feature Box -->
-
-    </div>
-  </div>
-
-</section><!-- End Features Section -->
-
-
-    <!-- Call To Action Section -->
-<section id="call-to-action" class="call-to-action section dark-background">
-
-  <img src="assets/img/hacnay_cta.jpg" alt="Call to Action Background">
-
-  <div class="container">
-    <div class="row" data-aos="zoom-in" data-aos-delay="100">
-      <div class="col-xl-9 text-center text-xl-start">
-        <h3>Take the Next Step with Hacnay</h3>
-        <p>Ready to elevate your online presence? Let’s work together to create a secure, innovative website that drives your business forward.</p>
-      </div>
-      <div class="col-xl-3 cta-btn-container text-center">
-        <a class="cta-btn align-middle" href="#contact">Get Started</a>
-      </div>
-    </div>
-  </div>
-
-</section><!-- End Call To Action Section -->
-
- <!-- Portfolio Section - Coming Soon -->
-<section id="portfolio" class="portfolio section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Portfolio</h2>
-    <p>Our creations are worth the wait. Get ready to explore our latest work!</p>
-  </div><!-- End Section Title -->
-
-  <div class="container text-center" data-aos="fade-up" data-aos-delay="200">
-    <h3>Coming Soon</h3>
-    <p>We're crafting something extraordinary. Our portfolio will be unveiled soon.</p>
-    <p style="font-style: italic; margin-top: 20px;">Stay tuned—our best work is just around the corner!</p>
-  </div>
-
-</section><!-- End Portfolio Section -->
-
-
-
-    <!-- Testimonials Section - Coming Soon -->
-<section id="testimonials" class="testimonials section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Testimonials</h2>
-    <p>What our clients are saying will soon be shared. Exciting insights are on the way!</p>
-  </div><!-- End Section Title -->
-
-  <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
-    <h3>Coming Soon</h3>
-    <p>We're curating inspiring stories from our clients. Stay tuned for their words of praise and experience!</p>
-    <p style="font-style: italic; margin-top: 20px;">Keep an eye out—great things are coming soon!</p>
-  </div>
-
-</section><!-- End Testimonials Section -->
-
-
-   <!-- Team Section -->
-<section id="team" class="team section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Team</h2>
-    <p>Meet our dedicated founder, and stay tuned as we expand our team with more talented individuals soon!</p>
-  </div><!-- End Section Title -->
-
-  <div class="container">
-
-    <div class="row gy-4 justify-content-center">
-
-      <!-- Founder -->
-<div class="col-lg-4 col-md-6 d-flex align-items-stretch justify-content-center" data-aos="fade-up" data-aos-delay="100">
-  <div class="team-member">
-    <div class="member-img text-center">
-      <img src="assets/img/team/subhang.jpeg" class="img-fluid" alt="Subhang Kumar" width="200" height="100">
-      <div class="social mt-3">
-        <a href="#"><i class="bi bi-twitter-x"></i></a>
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-        <a href="#"><i class="bi bi-linkedin"></i></a>
-      </div>
-    </div>
-    <div class="member-info text-center mt-3">
-      <h4>Subhang Kumar</h4>
-      <span>Founder</span>
-    </div>
-  </div>
-</div><!-- End Founder -->
-
-
-    </div>
-
-    <!-- Coming Soon Message -->
-    <div class="row gy-4 justify-content-center mt-4">
-      <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-delay="200">
-        <p>We are in the process of adding new members to our team. Stay tuned for updates!</p>
-      <!--<img src="assets/img/" class="img-fluid" alt="Coming Soon" style="max-width: 50%; margin-top: 20px;">-->
-      </div>
-    </div>
-
-  </div>
-
-</section><!-- /Team Section -->
-
-
-    <!-- Contact Section -->
-<section id="contact" class="contact section">
-
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Contact</h2>
-    <p>We'd love to hear from you. Feel free to reach out to us via email or visit us in Lucknow.</p>
-  </div><!-- End Section Title -->
-
-  <div class="container" data-aos="fade" data-aos-delay="100">
-
-    <div class="row gy-4">
-
-      <!-- Address -->
-      <div class="col-lg-4">
-        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-          <i class="bi bi-geo-alt flex-shrink-0"></i>
-          <div>
-            <h3>Address</h3>
-            <p>Lucknow, Uttar Pradesh, India</p>
-          </div>
-        </div><!-- End Info Item -->
-
-        <!-- Phone -->
-        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-          <i class="bi bi-telephone flex-shrink-0"></i>
-          <div>
-            <h3>Call Us</h3>
-            <p>+91 1234 567 890</p>
-          </div>
-        </div><!-- End Info Item -->
-
-        <!-- Email -->
-        <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-          <i class="bi bi-envelope flex-shrink-0"></i>
-          <div>
-            <h3>Email Us</h3>
-            <p>hacnay@hotmail.com</p>
-          </div>
-        </div><!-- End Info Item -->
-
-      </div>
-
-<!-- Contact Form -->
-<div class="col-lg-8">
-  <form action="https://docs.google.com/forms/d/e/1FAIpQLSeGbx2p0urbX7X8Fk69DMbs3uSwkeQAzFGjXXMkhRt9BAtCtA/formResponse"
-        method="POST"
-        target="hidden_iframe"
-        onsubmit="return handleSubmit();"
-        class="php-email-form"
-        data-aos="fade-up"
-        data-aos-delay="200">
-    
-    <div class="row gy-4">
-
-      <div class="col-md-6">
-        <input type="text" name="entry.350312141" class="form-control" placeholder="Your Name" required>
-      </div>
-
-      <div class="col-md-6">
-        <input type="email" name="entry.1453966446" class="form-control" placeholder="Your Email" required>
-      </div>
-
-      <div class="col-md-12">
-        <input type="text" name="entry.1731122688" class="form-control" placeholder="Subject" required>
-      </div>
-
-      <div class="col-md-12">
-        <textarea class="form-control" name="entry.1086125074" rows="6" placeholder="Message" required></textarea>
-      </div>
-
-      <div class="col-md-12 text-center">
-        <div id="loading" style="display: none;">Loading...</div>
-        <div id="sent-message" style="display: none;">Your message has been sent. Thank you!</div>
-
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </div>
-
-    </div>
-  </form>
-
-  <!-- Hidden iframe to prevent Google Forms from opening -->
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
+  <p style="margin-top: 30px;">Contact: <a href="mailto:info@hacnay.com" style="color:#00ffff;">info@hacnay.com</a></p>
 </div>
-<!-- End Contact Form -->
+
+<div class="footer">© 2025 HACNAY. All rights reserved.</div>
 
 <script>
-  function handleSubmit() {
-    document.getElementById("loading").style.display = "block"; // Show loading message
+// Countdown Timer
+const targetDate = new Date("2025-12-31T00:00:00").getTime();
+const updateCountdown = () => {
+  const now = new Date().getTime();
+  const diff = targetDate - now;
 
-    setTimeout(function() {
-      document.getElementById("loading").style.display = "none"; 
-      document.getElementById("sent-message").style.display = "block";
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      setTimeout(() => {
-        window.location.href = "https://hacnay.com"; // Change to your thank-you page
-      }, 2000);
-    }, 1000);
+  document.getElementById("days").textContent = String(days).padStart(2, '0');
+  document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+  document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+  document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+};
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-    return true; // Allow form submission
-  }
+// Matrix Background
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({ length: columns }).fill(1);
+
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#00ffcc";
+  ctx.font = `${fontSize}px Orbitron`;
+
+  drops.forEach((y, i) => {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    const x = i * fontSize;
+    ctx.fillText(text, x, y * fontSize);
+
+    if (y * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  });
+}
+setInterval(drawMatrix, 33);
 </script>
 
-
-
-    </div>
-
-  </div>
-
-</section><!-- /Contact Section -->
-
-
-  </main>
-
-  <footer id="footer" class="footer dark-background">
-
-    <div class="container">
-      <div class="row gy-3">
-        <!-- Address Section -->
-        <div class="col-lg-3 col-md-6 d-flex">
-          <i class="bi bi-geo-alt icon"></i>
-          <div class="address">
-            <h4>Address</h4>
-            <p>Lucknow, Uttar Pradesh</p>
-            <p>India</p>
-          </div>
-        </div>
-  
-        <!-- Contact Section -->
-        <div class="col-lg-3 col-md-6 d-flex">
-          <i class="bi bi-telephone icon"></i>
-          <div>
-            <h4>Contact</h4>
-            <p>
-              <strong>Phone:</strong> <span>+91 1234 567 890</span><br>
-              <strong>Email:</strong> <span>hacnay@hotmail.com</span><br>
-            </p>
-          </div>
-        </div>
-  
-        <!-- Opening Hours Section -->
-        <div class="col-lg-3 col-md-6 d-flex">
-          <i class="bi bi-clock icon"></i>
-          <div>
-            <h4>Opening Hours</h4>
-            <p>
-              <strong>Mon-Sat:</strong> <span>11AM - 11PM</span><br>
-              <strong>Sunday:</strong> <span>Closed</span>
-            </p>
-          </div>
-        </div>
-  
-        <!-- Social Media Section -->
-        <div class="col-lg-3 col-md-6">
-          <h4>Follow Us</h4>
-          <div class="social-links d-flex">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-  
-      </div>
-    </div>
-  
-    <!-- Copyright and Credits -->
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Hacnay</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by <a href="https://Hacnay.com">Hacnay</a>
-      </div>
-    </div>
-  
-  </footer>
-  
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
